@@ -4,11 +4,11 @@ export const sub_items = [
     path: "/",
   },
   {
-    item_name: "Security",
+    item_name: "Privacy",
     path: "/",
   },
   {
-    item_name: "Github",
+    item_name: "GitHub",
     path: "/",
   },
 ];

@@ -1,15 +1,13 @@
-import { Pencil } from "lucide-react";
 import Link from "next/link";
 
 export default function HeroFooter() {
   return (
-    <footer className="md:mt-30 md:mb-0 mt-auto mb-30 relative">
+    <footer className="mt-2 md:mb-0 mb-30 relative">
       <Link
-        href={"/account"}
-        className="bg-neutral-900 text-white px-5 py-3 rounded-md flex items-center gap-3"
+        href={"/new"}
+        className="bg-accent text-white px-5 py-3.5 rounded-md gap-3"
       >
-        Write a note
-        <Pencil size={20} />
+        Create my diary
       </Link>
     </footer>
   );

@@ -16,7 +16,7 @@ export default function HeroMeshImage({ src }) {
       onLoad={() => setLoaded(true)}
       className={`
           transition-opacity duration-700 ease-out
-          ${loaded ? "opacity-90" : "opacity-0"}
+          ${loaded ? "opacity-0" : "opacity-0"}
         `}
     />
   );
