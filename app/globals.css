@@ -10,6 +10,8 @@
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --color-main-heading: var(--custom-primary-text);
+    --color-accent-hover: #0066d6;
+    --color-accent: #007aff;
     --font-main: var(--font-inter);
     --font-geist: var(--font-geist-sans);
     --font-diary: var(--font-diary);

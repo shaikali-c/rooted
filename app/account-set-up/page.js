@@ -1,8 +1,7 @@
 import Image from "next/image";
 import FlowerImage from "@/public/assets/tree.png";
-import { ArrowRight, Cat } from "lucide-react";
+import { Cat } from "lucide-react";
 import Link from "next/link";
-import HeroMeshImage from "@/components/page_hero/hero_mesh_image";
 
 export default function AccountPage() {
   return (
@@ -14,23 +13,22 @@ export default function AccountPage() {
           className="md:object-cover object-contain mt-auto"
         />
       </div>
-      <section className="text-black flex items-center justify-center min-h-80 md:min-h-auto font-geist font-medium flex-col relative">
+      <section className="text-gray-900 flex items-center justify-center min-h-80 md:min-h-auto font-geist font-medium flex-col relative">
         <Cat className="mb-5" />
         <div className="z-1">
-          <main className="text-center flex flex-col gap-3 justify-center items-center">
-            <h2 className="md:text-4xl text-3xl ">
-              SETUP YOUR <br />
-              SECURE ACCOUNT
+          <main className="text-center flex flex-col gap-5 justify-center items-center">
+            <h2 className="md:text-4xl text-3xl tracking-tight">
+              A private place for your thoughts
             </h2>
-            <p className="text-neutral-700 px-4 md:max-w-100">
-              Make a secure account using cryptography to make the encryption
-              impossible to crack.
+            <p className="text-gray-700 px-4 md:max-w-100">
+              Everything you write is encrypted and stays private, so your
+              thoughts remain yours.
             </p>
             <Link
               href={"/new"}
-              className="px-5 py-3 bg-neutral-900 w-fit text-white rounded-md"
+              className="px-5 py-2.5 bg-accent w-fit text-white rounded-md font-semibold"
             >
-              Continue
+              Create my diary
             </Link>
           </main>
         </div>
