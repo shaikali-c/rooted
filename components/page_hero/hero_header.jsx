@@ -7,7 +7,7 @@ export default function HeroHeader() {
     <header className="md:p-15 p-5 flex items-center justify-between text-main-heading font-semibold md:text-xl text-lg z-100">
       <h2 className="flex items-center gap-2 text-gray-900">
         <Cat />
-        Meow Notes
+        Rooted
       </h2>
       <div className="md:flex items-center font-semibold gap-10 text-gray-900 text-base hidden">
         {sub_items.map((item) => (

@@ -6,5 +6,5 @@ export default function CDate() {
     day: "numeric",
     month: "short",
   }).format(date);
-  return <p className="text-neutral-600 text-xs">{formatted}</p>;
+  return <p className="text-xs font-main">{formatted}</p>;
 }
