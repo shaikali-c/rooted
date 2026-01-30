@@ -10,6 +10,9 @@ export default function AccountPage() {
         <Image
           src={FlowerImage}
           alt="Best Image"
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          placeholder="blur"
           className="md:object-cover object-contain mt-auto"
         />
       </div>

@@ -1,11 +1,13 @@
+"use client";
 import { AuthLayout } from "@/components/_ext/catalyst/auth-layout";
 import { Button } from "@/components/_ext/catalyst/button";
 import { Checkbox, CheckboxField } from "@/components/_ext/catalyst/checkbox";
 import { Description, Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
-import { Input } from "@/components/_ext/catalyst/input";
+import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
 import MainLogo from "@/components/main_logo";
+import { KeyIcon } from "@heroicons/react/20/solid";
 import { Cat } from "lucide-react";
 
 export default function PageEnter() {
@@ -19,20 +21,26 @@ export default function PageEnter() {
             className="grid w-full max-w-sm grid-cols-1 gap-8"
           >
             <MainLogo />
-            <Heading className={"text-gray-900"}>Everything is secured</Heading>
+            <Heading className={"text-gray-900"}>
+              Enter your password to continue
+            </Heading>
             <Field>
-              <Label>Type your password</Label>
-              <Input type="password" name="password" />
+              <Label>Password</Label>
+              <InputGroup>
+                <KeyIcon />
+                <Input name="search" aria-label="Search" />
+              </InputGroup>
+              <Description className={"text-neutral-500"}>
+                This password unlocks your encrypted entries.
+              </Description>
             </Field>
-            <div className="flex items-center justify-between">
-              <CheckboxField>
-                <Checkbox name="remember" />
-                <Label>Remember me</Label>
-              </CheckboxField>
-            </div>
-            <Button type="submit" className="w-full" color="blue">
+            {/* <CheckboxField>
+              <Checkbox name="remember" />
+              <Label>Remember me</Label>
+            </CheckboxField>*/}
+            <button className="py-2 w-full bg-accent text-white font-semibold rounded-md">
               Enter
-            </Button>
+            </button>
           </form>
         </AuthLayout>
       </div>
