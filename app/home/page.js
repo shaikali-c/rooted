@@ -7,7 +7,7 @@ export default function HomeSideBar() {
       <section className="w-full grid grid-cols-[30%_70%] max-w-7xl">
         <div className="border-r border-neutral-300 px-3 pr-5 flex flex-col gap-5 max-h-xl overflow-y-hidden pt-25">
           <button className="bg-neutral-200 py-2.5 font-semibold rounded-md text-gray-900 hover:bg-accent hover:text-white border border-neutral-300/70">
-            New Entry
+            Create entry
           </button>
           <div className="w-full p-5 bg-neutral-100 text-neutral-700 rounded-md flex flex-col gap-1 border border-neutral-300">
             <header className="font-diary">
