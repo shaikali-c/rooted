@@ -1,6 +1,5 @@
 import HeroHeader from "@/components/page_hero/hero_header";
 import HeroMain from "@/components/page_hero/hero_main";
-import HeroMeshImage from "@/components/page_hero/hero_mesh_image";
 
 export default function Home() {
   return (

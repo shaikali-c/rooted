@@ -2,7 +2,6 @@ import DropDown from "@/components/_ext/dropdown";
 import Entry from "@/components/entries/entry";
 import MainLogo from "@/components/main_logo";
 import CDate from "@/components/page_new/date";
-import { Ellipsis, Search } from "lucide-react";
 
 const entries = [
   {
@@ -16,8 +15,8 @@ const entries = [
 export default function HomeSideBar() {
   return (
     <main className="w-screen flex justify-center min-h-screen bg-neutral-100 text-gray-900 font-main">
-      <section className="w-full grid grid-cols-[35%_65%] max-w-7xl h-full">
-        <div className="border-r border-neutral-300 px-3 pr-5 flex flex-col gap-5 h-full max-h-dvh overflow-y-auto pt-25 mask-[linear-gradient(to_bottom,#000_70%,transparent_100%)]">
+      <section className="w-full grid md:grid-cols-[35%_65%] max-w-7xl h-full">
+        <div className="border-r border-neutral-300 md:px-3 px-4.5 md:pr-5 flex flex-col gap-5 h-full no-scrollbar max-h-dvh overflow-y-auto md:pt-25 pt-10 mask-[linear-gradient(to_bottom,#000_70%,transparent_100%)] pb-55 sticky left-0">
           <header className="flex items-center w-full justify-between mb-3">
             <MainLogo />
             <DropDown />
@@ -32,8 +31,9 @@ export default function HomeSideBar() {
           <Entry data={entries[0]} />
           <Entry data={entries[0]} />
           <Entry data={entries[0]} />
+          <p>End of the list</p>
         </div>
-        <div className="bg-neutral-100 p-25 flex flex-col">
+        <div className="bg-neutral-100 p-25 pt-25.5 md:flex flex-col max-h-dvh overflow-y-auto no-scrollbar hidden">
           <header className="flex flex-col gap-4">
             <CDate />
             <h2 className="font-semibold text-3xl text-neutral-800 mt-6.5 font-diary">
@@ -41,6 +41,34 @@ export default function HomeSideBar() {
             </h2>
           </header>
           <section className="mt-3 text-gray-800 flex flex-col gap-6 leading-7">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            </p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

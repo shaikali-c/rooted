@@ -1,10 +1,14 @@
 import { Cat } from "lucide-react";
+import Link from "next/link";
 
 export default function MainLogo() {
   return (
-    <h2 className="flex items-center gap-2 font-semibold text-gray-900">
+    <Link
+      href={"/"}
+      className="flex items-center gap-2 font-semibold text-gray-900"
+    >
       <Cat />
       Rooted
-    </h2>
+    </Link>
   );
 }

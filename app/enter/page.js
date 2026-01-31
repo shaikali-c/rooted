@@ -30,7 +30,7 @@ export default function PageEnter() {
                 This password unlocks your encrypted entries.
               </Description>
             </Field>
-            <button className="py-2 w-full bg-accent text-white font-semibold rounded-md">
+            <button className="py-1.5 w-full bg-accent text-white font-semibold rounded-md">
               Enter
             </button>
           </form>
