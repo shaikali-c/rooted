@@ -1,14 +1,10 @@
 "use client";
 import { AuthLayout } from "@/components/_ext/catalyst/auth-layout";
-import { Button } from "@/components/_ext/catalyst/button";
-import { Checkbox, CheckboxField } from "@/components/_ext/catalyst/checkbox";
 import { Description, Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
 import { Input, InputGroup } from "@/components/_ext/catalyst/input";
-import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
 import MainLogo from "@/components/main_logo";
 import { KeyIcon } from "@heroicons/react/20/solid";
-import { Cat } from "lucide-react";
 
 export default function PageEnter() {
   return (
@@ -34,10 +30,6 @@ export default function PageEnter() {
                 This password unlocks your encrypted entries.
               </Description>
             </Field>
-            {/* <CheckboxField>
-              <Checkbox name="remember" />
-              <Label>Remember me</Label>
-            </CheckboxField>*/}
             <button className="py-2 w-full bg-accent text-white font-semibold rounded-md">
               Enter
             </button>

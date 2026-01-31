@@ -23,12 +23,6 @@ export default function HeroHeader() {
       <div className="flex md:gap-5 items-center">
         <Link
           href={"/account-set-up"}
-          className="px-5 py-2 bg-transparent text-sm text-gray-900 hover:underline"
-        >
-          Sign Up
-        </Link>
-        <Link
-          href={"/account-set-up"}
           className="px-4 py-1.5  text-accent hover:bg-accent hover:text-white text-sm rounded-md"
         >
           Log in
