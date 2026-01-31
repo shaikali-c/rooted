@@ -16,7 +16,7 @@ export default function CTextArea() {
       spellCheck={false}
       autoCorrect="off"
       autoCapitalize="off"
-      className="w-full h-full outline-0 resize-none text-lg text-neutral-800"
+      className="w-full h-full outline-0 resize-none text-lg text-neutral-900"
       placeholder="Start writing from here..."
     ></textarea>
   );

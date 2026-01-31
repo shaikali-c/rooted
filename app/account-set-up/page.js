@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AccountPage() {
   return (
-    <section className="bg-white h-dvh w-screen flex flex-col-reverse md:grid md:grid-cols-2">
+    <section className=" h-dvh w-screen bg-neutral-100 flex flex-col-reverse md:grid md:grid-cols-2 relative">
       <div className="relative w-full h-full flex flex-col">
         <Image
           src={FlowerImage}
@@ -36,6 +36,7 @@ export default function AccountPage() {
           </main>
         </div>
       </section>
+      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
     </section>
   );
 }
