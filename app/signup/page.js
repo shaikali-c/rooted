@@ -2,7 +2,7 @@ import { AuthLayout } from "@/components/_ext/catalyst/auth-layout";
 import { Description, Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
 import { Input, InputGroup } from "@/components/_ext/catalyst/input";
-import { Text } from "@/components/_ext/catalyst/text";
+import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
 import MainLogo from "@/components/main_logo";
 import { EnvelopeIcon, KeyIcon } from "@heroicons/react/24/outline";
 
@@ -49,6 +49,12 @@ export default function PageSignup() {
             >
               Continue
             </button>
+            <Text>
+              Already have an account?{" "}
+              <TextLink href="/login">
+                <Strong>Login</Strong>
+              </TextLink>
+            </Text>
           </form>
         </AuthLayout>
       </div>
