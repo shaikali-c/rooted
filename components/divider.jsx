@@ -1,4 +1,4 @@
-export default function Divider() {
+export default function Divider({ text = "That's all" }) {
   return (
     <div className="relative">
       <div aria-hidden="true" className="absolute inset-0 flex items-center">
@@ -6,7 +6,7 @@ export default function Divider() {
       </div>
       <div className="relative flex justify-center">
         <span className="bg-neutral-100 px-2 text-sm text-gray-500">
-          That's all
+          {text}
         </span>
       </div>
     </div>

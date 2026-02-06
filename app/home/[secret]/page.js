@@ -1,13 +1,15 @@
-import { Link } from "@/components/_ext/catalyst/link";
+import Divider from "@/components/divider";
 import FadeIn from "@/components/fadein";
 import { sec_t } from "@/constants/dummy";
-import { X } from "lucide-react";
+import { ChevronLeft, Cross, X } from "lucide-react";
+import Link from "next/link";
 
-export default function PageHome() {
-  const { date, title, content } = sec_t[Object.keys(sec_t)[0]];
+export default async function PageSecret({ params }) {
+  const { secret } = await params;
+  const { date, title, content } = sec_t[secret];
   return (
     <FadeIn>
-      <main className="w-full h-full md:p-30 md:pt-25 p-6.5 pt-6 relative pb-20 hidden md:block">
+      <main className="w-full h-full md:p-30 md:pt-25 p-6.5 pt-6 relative pb-20">
         <header className="flex flex-col text-gray-800">
           <Link
             href={"/home"}

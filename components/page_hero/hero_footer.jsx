@@ -6,7 +6,7 @@ export default function HeroFooter() {
     <footer className="mt-2 md:mb-0 mb-30 relative flex items-center flex-col gap-4">
       <Link
         href={"/new"}
-        className="bg-accent text-white px-5 py-3 rounded-md gap-3"
+        className="bg-accent text-white px-5 py-3 rounded-md gap-3 font-semibold"
       >
         Start writing
       </Link>
