@@ -1,6 +1,6 @@
 "use client";
 
-import { Description, Field, Label } from "@/components/_ext/catalyst/fieldset";
+import { Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
 import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";

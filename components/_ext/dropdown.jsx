@@ -1,14 +1,16 @@
 "use client";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import {
-  ArchiveBoxIcon,
   ArrowRightCircleIcon,
   DocumentDuplicateIcon,
   HeartIcon,
-  PencilSquareIcon,
+  HomeIcon,
+  LockClosedIcon,
   TrashIcon,
+  UserCircleIcon,
   UserPlusIcon,
 } from "@heroicons/react/20/solid";
+import { PlusIcon } from "@heroicons/react/24/outline";
 import { Ellipsis } from "lucide-react";
 
 export default function DropDown() {
@@ -30,11 +32,11 @@ export default function DropDown() {
               href="#"
               className="group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
             >
-              <PencilSquareIcon
+              <PlusIcon
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
-              Edit
+              New
             </a>
           </MenuItem>
           <MenuItem className="group">
@@ -56,11 +58,11 @@ export default function DropDown() {
               href="#"
               className="group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
             >
-              <ArchiveBoxIcon
+              <HomeIcon
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
-              Archive
+              Home
             </a>
           </MenuItem>
           <MenuItem className="group">
@@ -68,11 +70,11 @@ export default function DropDown() {
               href="#"
               className="group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
             >
-              <ArrowRightCircleIcon
+              <LockClosedIcon
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
-              Move
+              Lock
             </a>
           </MenuItem>
         </div>
@@ -82,11 +84,11 @@ export default function DropDown() {
               href="#"
               className="group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"
             >
-              <UserPlusIcon
+              <UserCircleIcon
                 aria-hidden="true"
                 className="mr-3 size-5 text-gray-400 group-data-focus:text-gray-500"
               />
-              Share
+              Account
             </a>
           </MenuItem>
           <MenuItem className="group">

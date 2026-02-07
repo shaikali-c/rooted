@@ -1,7 +1,7 @@
 import Image from "next/image";
 import FlowerImage from "@/public/assets/tree.png";
 import { Cat } from "lucide-react";
-import Link from "next/link";
+import PrimaryButton from "@/components/primary_btn";
 
 export default function AccountPage() {
   return (
@@ -27,12 +27,7 @@ export default function AccountPage() {
               Everything you write is encrypted and stays private, so your
               thoughts remain yours.
             </p>
-            <Link
-              href={"/new"}
-              className="px-5 py-2.5 bg-accent w-fit text-white rounded-md font-semibold"
-            >
-              Create my diary
-            </Link>
+            <PrimaryButton href="/new">Create my diary</PrimaryButton>
           </main>
         </div>
       </section>
