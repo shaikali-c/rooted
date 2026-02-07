@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import DropDown from "../_ext/dropdown";
 
-export default function DropDownWrapper() {
+export default function DropDownWrapper({ list }) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -11,5 +11,5 @@ export default function DropDownWrapper() {
     return <div className="px-2 rounded-md bg-neutral-200" />;
   }
 
-  return <DropDown />;
+  return <DropDown list={list} />;
 }

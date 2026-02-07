@@ -1,10 +1,6 @@
-"us";
+import { date_f } from "@/lib/date";
+
 export default function CDate() {
-  const date = new Date();
-  const formatted = new Intl.DateTimeFormat("en-US", {
-    weekday: "long",
-    day: "numeric",
-    month: "short",
-  }).format(date);
+  const formatted = date_f;
   return <p className="text-xs font-main">{formatted}</p>;
 }

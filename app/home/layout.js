@@ -6,11 +6,12 @@ import DropDownWrapper from "@/components/page_new/dropdown_wrapper";
 import { sec_t } from "@/constants/dummy";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { home_dd } from "@/constants/dropdowns";
 
-export default function HomeLayout({ children }) {
+export default function HomeLayout({ children, list }) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter(Boolean);
-  const entryOpened = segments.length > 1; // true if "/home/x"
+  const entryOpened = segments.length > 1;
 
   const [activeEnt, setActiveEnt] = useState(Object.keys(sec_t)[0]);
   return (
@@ -21,7 +22,7 @@ export default function HomeLayout({ children }) {
         >
           <header className="flex items-center w-full justify-between mb-3">
             <MainLogo />
-            <DropDownWrapper />
+            <DropDownWrapper list={home_dd} />
           </header>
           <input
             type="text"
