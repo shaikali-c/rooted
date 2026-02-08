@@ -6,13 +6,16 @@ import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
 import MainLogo from "@/components/main_logo";
 import { EnvelopeIcon, KeyIcon } from "@heroicons/react/24/outline";
+import { Loader } from "lucide-react";
+import { useState } from "react";
 export default function LoginForm({}) {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
-    console.log(e.target.email.value);
-    console.log(e.target.password.value);
     const data = {
-      email: e.target.email.value,
+      username: e.target.username.value,
       password: e.target.password.value,
     };
     const res = await fetch("/api/login", {
@@ -22,8 +25,13 @@ export default function LoginForm({}) {
       },
       body: JSON.stringify(data),
     });
+    setLoading(false);
     const response = await res.json();
-    console.log(response);
+    if (!response.success) {
+      setError(response.error);
+    } else {
+      setError(false);
+    }
   };
   return (
     <form
@@ -33,10 +41,10 @@ export default function LoginForm({}) {
       <MainLogo />
       <Heading className={"text-gray-900"}>Welcome back</Heading>
       <Field>
-        <Label>Email</Label>
+        <Label>Username</Label>
         <InputGroup>
           <EnvelopeIcon />
-          <Input name="email" aria-label="Search" />
+          <Input name="username" aria-label="Search" />
         </InputGroup>
       </Field>
       <Field>
@@ -46,11 +54,23 @@ export default function LoginForm({}) {
           <Input name="password" aria-label="Search" />
         </InputGroup>
       </Field>
+      {error && (
+        <Field>
+          <Text
+            className={
+              "text-red-600 bg-red-200 p-2 flex gap-2 items-center rounded-md px-5"
+            }
+          >
+            Failed to authenticate
+          </Text>
+        </Field>
+      )}
       <button
-        className="py-1.5 w-full bg-accent text-white font-semibold rounded-md"
+        className={`py-1.5 w-full ${loading ? "bg-accent/70" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
         type="submit"
       >
-        Login
+        {loading && <Loader size={18} className={"animate-spin"} />}
+        {loading ? "Logging in..." : "Login"}
       </button>
       <Text>
         Dont't have an account?{" "}

@@ -15,24 +15,29 @@ export async function POST(req) {
       );
     }
 
-    const { data, error } = await supabase
-      .from("owners")
-      .select("id, password")
-      .eq("username", username)
-      .single();
-
-    if (!data) {
+    if (password.length < 8) {
       return NextResponse.json(
-        { error: "Username not found" },
+        { error: "Password too short" },
         { status: 400 },
       );
     }
 
-    const isValid = await bcrypt.compare(password, data.password);
-    if (!isValid) {
+    const cleanUsername = username.trim().toLowerCase();
+    const passwordHash = await bcrypt.hash(password, 12);
+
+    const { data, error } = await supabase
+      .from("owners")
+      .insert({
+        username: cleanUsername,
+        password: passwordHash,
+      })
+      .select()
+      .single();
+
+    if (error) {
       return NextResponse.json(
-        { error: "Incorrect password" },
-        { status: 400 },
+        { error: "Username already exists" },
+        { status: 409 },
       );
     }
 
@@ -50,8 +55,13 @@ export async function POST(req) {
       maxAge: 60 * 60 * 24 * 30,
       path: "/",
     });
+
     redirect("/home");
   } catch (err) {
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    console.error("SIGNUP ERROR:", err);
+    return NextResponse.json(
+      { error: "Internal server error" },
+      { status: 500 },
+    );
   }
 }

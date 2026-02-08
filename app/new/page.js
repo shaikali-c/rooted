@@ -1,72 +1,42 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import CTextArea from "@/components/page_new/main_textarea";
-import CHelpers from "@/components/page_new/helpers";
-import CHeader from "@/components/page_new/header";
-import { date_f } from "@/lib/date";
-import { hashObject } from "@/lib/hash_object";
 
-export default function PageNew() {
-  const [secret, setSecret] = useState("");
-  const [title, setTitle] = useState("");
-  const [savedMins, setSavedMins] = useState("Not Saved Yet");
-  const lastHash = useRef(null);
-  const lastSave = useRef(null);
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { LoaderCircle } from "lucide-react";
+import { v4 } from "uuid";
 
-  const handleSecretSubmit = async () => {
-    // await fetch("/api/save", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(base_data),
-    // });
-    console.log("Saved");
-  };
-  useEffect(() => {
-    const timeout = setTimeout(async () => {
-      const base_data = { title, secret, date: date_f };
+function generateHash() {
+  return v4();
+}
 
-      const hash = await hashObject(base_data);
-      if (hash === lastHash.current) return;
-
-      lastHash.current = hash;
-      lastSave.current = Date.now();
-
-      console.log("Saving:", base_data);
-      handleSecretSubmit();
-    }, 3000);
-
-    return () => clearTimeout(timeout);
-  }, [title, secret]);
+export default function NewPage() {
+  const router = useRouter();
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (typeof lastSave.current !== "number") return;
+    const createSecret = async () => {
+      const hash = generateHash();
 
-      const diffMs = Date.now() - lastSave.current;
-      if (!Number.isFinite(diffMs)) return;
+      const res = await fetch("/api/create_secret", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ hash }),
+      });
 
-      const mins = Math.floor(diffMs / 60000);
-      const hours = Math.floor(mins / 60);
-
-      if (hours > 0) {
-        setSavedMins(`${hours} hr${hours > 1 ? "s" : ""} ago`);
-      } else if (mins > 0) {
-        setSavedMins(`${mins} min${mins > 1 ? "s" : ""} ago`);
-      } else {
-        setSavedMins("just now");
+      if (!res.ok) {
+        return;
       }
-    }, 1000);
 
-    return () => clearInterval(interval);
+      router.replace(`/new/${hash}`);
+    };
+    createSecret();
   }, []);
 
   return (
-    <main className="w-screen h-dvh flex items-center justify-center bg-[#f6f5f2] text-neutral-900 font-diary">
-      <div className="w-full max-w-5xl h-full flex flex-col p-6 gap-2">
-        <CHeader title={title} setTitle={setTitle} />
-        <CTextArea secret={secret} setSecret={setSecret} />
-        <CHelpers savedMins={savedMins} secret={secret} />
+    <div className="flex items-center justify-center bg-neutral-100 h-dvh w-screen text-gray-900 font-main flex-col">
+      <div className="animate-spin">
+        <LoaderCircle size={24} className="animate-spin" />
       </div>
-    </main>
+      <p className="animate-pulse">Creating secure session…</p>
+    </div>
   );
 }

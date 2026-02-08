@@ -6,7 +6,7 @@ export function Text({ className, ...props }) {
     <p
       data-slot="text"
       {...props}
-      className={clsx(className, "text-base/6 text-zinc-500 sm:text-sm/6")}
+      className={clsx(className, "text-base/6 sm:text-sm/6")}
     />
   );
 }

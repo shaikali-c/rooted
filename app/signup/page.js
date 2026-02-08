@@ -1,3 +1,4 @@
+"use client";
 import { AuthLayout } from "@/components/_ext/catalyst/auth-layout";
 import { Description, Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
@@ -5,31 +6,52 @@ import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
 import MainLogo from "@/components/main_logo";
 import { EnvelopeIcon, KeyIcon } from "@heroicons/react/24/outline";
+import { useRef } from "react";
 
 export default function PageSignup() {
+  const username = useRef(null);
+  const password = useRef(null);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const res = await fetch("/api/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: username.current.value,
+        password: password.current.value,
+      }),
+    });
+    const response = await res.json();
+  };
   return (
     <main className="h-dvh w-screen flex justify-center relative items-center font-main bg-neutral-100 text-gray-900">
       <div className="w-full md:w-auto">
         <AuthLayout>
           <form
-            action="#"
+            onSubmit={handleSubmit}
             method="POST"
             className="grid w-full max-w-sm grid-cols-1 gap-8"
           >
             <MainLogo />
             <Heading className={"text-gray-900"}>Start here</Heading>
             <Field>
-              <Label>New email</Label>
+              <Label>Unique username</Label>
               <InputGroup>
                 <EnvelopeIcon />
-                <Input name="email" aria-label="Search" />
+                <Input
+                  name="username"
+                  ref={username}
+                  aria-label="Username feild"
+                />
               </InputGroup>
             </Field>
             <Field>
               <Label>New password</Label>
               <InputGroup>
                 <KeyIcon />
-                <Input name="email" aria-label="Search" />
+                <Input name="password" aria-label="Search" ref={password} />
               </InputGroup>
             </Field>
             <Field>
