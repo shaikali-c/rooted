@@ -1,38 +1,29 @@
 import FadeIn from "@/components/fadein";
+import SecretContent from "@/components/page_home/secret";
+import SecretHeading from "@/components/page_home/secret_heading";
 import { decryptData } from "@/lib/e";
-import { supabase } from "@/lib/supabase";
-import { X } from "lucide-react";
+import { getSecret } from "@/lib/fetch/secrets";
 import Link from "next/link";
 
-export default async function PageSecret({ params }) {
+export default async function Secret({ params }) {
   const { secret } = await params;
-  const { data, error } = await supabase
-    .from("secrets")
-    .select("*")
-    .eq("uid", secret)
-    .single();
-  if (error) return <p>Sorry</p>;
-  const decrypt = await decryptData(data.payload, "123");
-  const decrypt_parse = JSON.parse(decrypt.content);
-  const { date, title } = decrypt_parse;
-  const main_secret = decrypt_parse.secret;
+  const fetchSecret = await getSecret(secret);
+  const decrypt = await decryptData(fetchSecret.payload, "123");
+  const parse = JSON.parse(decrypt.content);
+  const { title, date } = parse;
+  const main_secret = parse.secret;
   return (
     <FadeIn>
-      <main className="w-full h-full md:p-30 md:pt-25 p-6.5 pt-0 relative pb-20">
-        <header className="flex flex-col text-gray-800">
-          {/* <Link
-            href={"/home"}
-            className=" text-gray-700 underline md:hidden w-fit mb-8 flex gap-1 items-center font-semibold rounded-full justify-center ml-auto"
-          >
-            <X />
-          </Link>*/}
-          <h2 className="text-xs text-gray-600 mb-2.5 md:mb-3">{date}</h2>
-          <h2 className="font-semibold font-diary text-3xl ">{title}</h2>
-        </header>
-        <p className="whitespace-pre-wrap my-6 text-gray-900 text-base/7">
-          {main_secret}
-        </p>
-      </main>
+      <section className="md:p-5 text-neutral-800 flex flex-col gap-7 md:pt-5 pt-10 relative pb-15">
+        <div className="flex justify-between items-center">
+          <Link href={"/home"} className="md:hidden text-accent underline">
+            Back
+          </Link>
+        </div>
+        <p className="text-xs text-neutral-600">{date}</p>
+        <SecretHeading>{title}</SecretHeading>
+        <SecretContent>{main_secret}</SecretContent>
+      </section>
     </FadeIn>
   );
 }

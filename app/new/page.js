@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Loader, LoaderCircle } from "lucide-react";
+import { Loader } from "lucide-react";
 import { v4 } from "uuid";
 
 function generateHash() {

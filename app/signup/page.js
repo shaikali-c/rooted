@@ -50,7 +50,6 @@ export default function PageSignup() {
         <AuthLayout>
           <form
             onSubmit={handleSubmit}
-            method="POST"
             className="grid w-full max-w-sm grid-cols-1 gap-8"
           >
             <MainLogo />

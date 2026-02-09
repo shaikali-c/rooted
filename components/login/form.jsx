@@ -46,7 +46,6 @@ export default function LoginForm({}) {
     <form
       className="grid w-full max-w-sm grid-cols-1 gap-8"
       onSubmit={handleSubmit}
-      method="POST"
     >
       <MainLogo />
       <Heading className={"text-gray-900"}>Welcome back</Heading>

@@ -1,7 +1,31 @@
 "use client";
+import {
+  ArrowLeftStartOnRectangleIcon,
+  DocumentDuplicateIcon,
+  HeartIcon,
+  HomeIcon,
+  LockClosedIcon,
+  SparklesIcon,
+  TrashIcon,
+  UserCircleIcon,
+} from "@heroicons/react/20/solid";
+import { PlusIcon } from "@heroicons/react/24/outline";
+
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { Ellipsis } from "lucide-react";
 import Link from "next/link";
+const ICONS = {
+  plus: PlusIcon,
+  duplicate: DocumentDuplicateIcon,
+  home: HomeIcon,
+  lockclosed: LockClosedIcon,
+  heart: HeartIcon,
+  usercircle: UserCircleIcon,
+  trash: TrashIcon,
+  sparkles: SparklesIcon,
+  arrowleft: ArrowLeftStartOnRectangleIcon,
+};
+
 export default function DropDown({ list }) {
   return (
     <Menu as="div" className="relative inline-block text-left out outline-0">
@@ -18,18 +42,19 @@ export default function DropDown({ list }) {
         {list.map((section, sectionIdx) => (
           <div key={sectionIdx} className="py-1">
             {section.items.map((item, itemIdx) => {
-              const Icon = item.icon;
+              const Icon = ICONS[item.icon];
 
               return (
                 <MenuItem key={itemIdx} className="group">
                   <Link
                     href={item.href}
-                    className={`group flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 ${item.danger ? "text-red-400 data-focus:bg-red-100 data-focus:text-red-400" : " text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900"}`}
+                    className={`flex items-center px-4 py-2 text-sm ${
+                      item.danger
+                        ? "text-red-400 data-focus:bg-red-100"
+                        : "text-gray-700 data-focus:bg-gray-100"
+                    }`}
                   >
-                    <Icon
-                      aria-hidden="true"
-                      className={`mr-3 size-5 ${item.danger ? "text-red-400 group-data-focus:text-red-400" : "text-gray-400"} group-data-focus:text-gray-500`}
-                    />
+                    {Icon && <Icon className="mr-3 size-5" />}
                     {item.label}
                   </Link>
                 </MenuItem>

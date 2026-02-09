@@ -1,29 +1,15 @@
-import {
-  ArrowLeftStartOnRectangleIcon,
-  ArrowRightCircleIcon,
-  DocumentDuplicateIcon,
-  HeartIcon,
-  HomeIcon,
-  LockClosedIcon,
-  SparklesIcon,
-  TrashIcon,
-  UserCircleIcon,
-  UserPlusIcon,
-} from "@heroicons/react/20/solid";
-import { PlusIcon } from "@heroicons/react/24/outline";
-
 export const new_dd = [
   {
     items: [
       {
         label: "New",
         href: "/new",
-        icon: PlusIcon,
+        icon: "plus",
       },
       {
         label: "Duplicate",
         href: "#",
-        icon: DocumentDuplicateIcon,
+        icon: "duplicate",
       },
     ],
   },
@@ -31,13 +17,13 @@ export const new_dd = [
     items: [
       {
         label: "Home",
-        href: "/",
-        icon: HomeIcon,
+        href: "/home",
+        icon: "home",
       },
       {
         label: "Lock",
         href: "#",
-        icon: LockClosedIcon,
+        icon: "lockclosed",
       },
     ],
   },
@@ -46,12 +32,12 @@ export const new_dd = [
       {
         label: "Account",
         href: "#",
-        icon: UserCircleIcon,
+        icon: "usercircle",
       },
       {
         label: "Add to favorites",
         href: "#",
-        icon: HeartIcon,
+        icon: "heart",
       },
     ],
   },
@@ -60,7 +46,7 @@ export const new_dd = [
       {
         label: "Delete",
         href: "#",
-        icon: TrashIcon,
+        icon: "trash",
         danger: true, // optional future use
       },
     ],
@@ -72,12 +58,12 @@ export const home_dd = [
       {
         label: "New",
         href: "/new",
-        icon: PlusIcon,
+        icon: "plus",
       },
       {
         label: "Advanced search",
         href: "#",
-        icon: SparklesIcon,
+        icon: "sparkles",
       },
     ],
   },
@@ -86,12 +72,12 @@ export const home_dd = [
       {
         label: "Home",
         href: "/",
-        icon: HomeIcon,
+        icon: "home",
       },
       {
         label: "Lock",
         href: "#",
-        icon: LockClosedIcon,
+        icon: "lockclosed",
       },
     ],
   },
@@ -100,12 +86,12 @@ export const home_dd = [
       {
         label: "Account",
         href: "#",
-        icon: UserCircleIcon,
+        icon: "usercircle",
       },
       {
         label: "Favorites",
         href: "#",
-        icon: HeartIcon,
+        icon: "heart",
       },
     ],
   },
@@ -114,7 +100,7 @@ export const home_dd = [
       {
         label: "Logout",
         href: "#",
-        icon: ArrowLeftStartOnRectangleIcon,
+        icon: "arrowleft",
         danger: true, // optional future use
       },
     ],
