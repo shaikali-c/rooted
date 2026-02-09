@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-export default function SecretCard({ data }) {
+export default function SecretCard({ data, active }) {
   const { title, uid, secret, date } = data;
   return (
     <Link
       href={`/home/${uid}`}
-      className="w-full block border border-neutral-200 rounded-md p-5 hover:bg-neutral-200/35"
+      className={`w-full block border p-5 hover:bg-neutral-200/35 rounded-md ${active ? "bg-neutral-200/35 border-neutral-300" : "md:border-neutral-100 border-neutral-200"}`}
     >
       <header className="flex flex-col gap-2">
         <p className="text-xs text-neutral-600">{date}</p>

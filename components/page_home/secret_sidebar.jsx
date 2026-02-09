@@ -25,10 +25,16 @@ export default function SecretSidebar({ secrets }) {
           className="py-2.5 px-4 focus:border-accent/80 outline-0 border w-full rounded-md border-neutral-200"
         ></input>
       </div>
-      <section className="flex flex-col gap-5 h-full overflow-y-auto no-scrollbar pb-40">
+      <section className="flex flex-col md:gap-10 gap-6 pt-5 h-full overflow-y-auto no-scrollbar pb-40">
         {secrets.map((elem) => {
           const parse = JSON.parse(elem.content);
-          return <SecretCard data={parse} key={parse.uid} />;
+          return (
+            <SecretCard
+              data={parse}
+              key={parse.uid}
+              active={pathname.split("/")[2] === parse.uid}
+            />
+          );
         })}
         <Divider />
       </section>
