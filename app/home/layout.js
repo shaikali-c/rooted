@@ -1,8 +1,13 @@
 import SecretSidebar from "@/components/page_home/secret_sidebar";
 import { getSecrets } from "@/lib/fetch/secrets";
+import { redirect } from "next/navigation";
+import { getCookie } from "../actions";
 
 export default async function HomeLayout({ children }) {
   const secrets = await getSecrets();
+  if (!Array.isArray(secrets)) {
+    redirect("/invalid");
+  }
   return (
     <main className="w-screen min-h-dvh bg-neutral-100 flex justify-center text-neutral-800 font-geist">
       <section className="md:max-w-310 w-full bg-neutral-100 min-h-screen grid md:grid-cols-[33%_67%] gap-10 md:px-0 px-5">

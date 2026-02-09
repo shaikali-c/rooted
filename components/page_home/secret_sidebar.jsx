@@ -9,6 +9,10 @@ import Divider from "../divider";
 export default function SecretSidebar({ secrets }) {
   const pathname = usePathname();
   const isDetail = pathname.split("/").length > 2;
+  const secs = secrets.map((elem) => {
+    return JSON.parse(elem.content);
+  });
+  const filtered = secs.filter((elem) => elem.secret);
 
   return (
     <div
@@ -26,13 +30,12 @@ export default function SecretSidebar({ secrets }) {
         ></input>
       </div>
       <section className="flex flex-col md:gap-10 gap-6 pt-5 h-full overflow-y-auto no-scrollbar pb-40">
-        {secrets.map((elem) => {
-          const parse = JSON.parse(elem.content);
+        {filtered.map((elem) => {
           return (
             <SecretCard
-              data={parse}
-              key={parse.uid}
-              active={pathname.split("/")[2] === parse.uid}
+              data={elem}
+              key={elem.uid}
+              active={pathname.split("/")[2] === elem.uid}
             />
           );
         })}

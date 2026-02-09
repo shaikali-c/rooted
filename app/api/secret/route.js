@@ -6,6 +6,7 @@ import { sha256 } from "@/helpers/sha256";
 
 export async function POST(req) {
   const token = req.cookies.get("auth")?.value;
+  const protected_key = req.cookies.get("protected")?.value;
   if (!token) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
