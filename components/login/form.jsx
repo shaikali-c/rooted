@@ -4,13 +4,20 @@ import { Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
 import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
-import MainLogo from "@/components/main_logo";
 import { EnvelopeIcon, KeyIcon } from "@heroicons/react/24/outline";
 import { Loader } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+import MainLogo from "@/components/main_logo";
+import FormError from "../form_err";
+
 export default function LoginForm({}) {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+
   const handleSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -27,16 +34,19 @@ export default function LoginForm({}) {
     });
     setLoading(false);
     const response = await res.json();
+    console.log(response);
     if (!response.success) {
       setError(response.error);
     } else {
       setError(false);
+      router.replace("/home");
     }
   };
   return (
     <form
       className="grid w-full max-w-sm grid-cols-1 gap-8"
       onSubmit={handleSubmit}
+      method="POST"
     >
       <MainLogo />
       <Heading className={"text-gray-900"}>Welcome back</Heading>
@@ -54,17 +64,7 @@ export default function LoginForm({}) {
           <Input name="password" aria-label="Search" />
         </InputGroup>
       </Field>
-      {error && (
-        <Field>
-          <Text
-            className={
-              "text-red-600 bg-red-200 p-2 flex gap-2 items-center rounded-md px-5"
-            }
-          >
-            Failed to authenticate
-          </Text>
-        </Field>
-      )}
+      {error && <FormError>Failed to authenticate</FormError>}
       <button
         className={`py-1.5 w-full ${loading ? "bg-accent/70" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
         type="submit"

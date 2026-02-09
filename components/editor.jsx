@@ -5,7 +5,7 @@ import CTextArea from "@/components/page_new/main_textarea";
 import CHelpers from "@/components/page_new/helpers";
 import CHeader from "@/components/page_new/header";
 import { date_f } from "@/lib/date";
-import { hashObject } from "@/lib/hash_object";
+import { fnv1a } from "@/lib/hash_object";
 
 export default function Editor({ id }) {
   const [secret, setSecret] = useState("");
@@ -46,7 +46,7 @@ export default function Editor({ id }) {
     debounceRef.current = setTimeout(async () => {
       const base_data = { title, uid: id, secret, date: date_f };
 
-      const hash = await hashObject({ title, secret });
+      const hash = fnv1a(title + "\u0000" + secret);
       if (hash === lastHash.current) return;
 
       lastHash.current = hash;

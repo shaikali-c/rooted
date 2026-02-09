@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
-import bcrypt from "bcrypt";
 import { signJWT } from "@/lib/signJWT";
-import { redirect } from "next/navigation";
+import bcrypt from "bcrypt";
+import { sha256 } from "@/helpers/sha256";
 
 export async function POST(req) {
   try {
@@ -38,11 +38,10 @@ export async function POST(req) {
 
     const token = signJWT({
       id: data.id,
-      role: "user",
+      owner: sha256(username),
     });
 
     const res = NextResponse.json({ success: true });
-
     res.cookies.set("auth", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -50,7 +49,8 @@ export async function POST(req) {
       maxAge: 60 * 60 * 24 * 30,
       path: "/",
     });
-    redirect("/home");
+
+    return res;
   } catch (err) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }

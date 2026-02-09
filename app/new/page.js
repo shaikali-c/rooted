@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { LoaderCircle } from "lucide-react";
+import { Loader, LoaderCircle } from "lucide-react";
 import { v4 } from "uuid";
 
 function generateHash() {
@@ -32,11 +32,9 @@ export default function NewPage() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center bg-neutral-100 h-dvh w-screen text-gray-900 font-main flex-col">
-      <div className="animate-spin">
-        <LoaderCircle size={24} className="animate-spin" />
-      </div>
-      <p className="animate-pulse">Creating secure session…</p>
+    <div className="flex items-center justify-center bg-neutral-100 h-dvh w-screen text-gray-900 font-main flex-col gap-2">
+      <Loader size={24} className="animate-[spin_2s_linear_infinite]" />
+      <p>Creating new session</p>
     </div>
   );
 }

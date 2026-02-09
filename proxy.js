@@ -10,9 +10,9 @@ export async function proxy(req) {
 
   try {
     const payload = await verifyJWT(token);
-    const res = NextResponse.next();
-
-    return res;
+    let response = NextResponse.next();
+    response.cookies.set("owner", payload.owner);
+    return response;
   } catch (err) {
     const res = NextResponse.redirect(new URL("/login", req.url));
     res.cookies.delete("auth");

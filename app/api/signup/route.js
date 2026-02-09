@@ -1,14 +1,13 @@
-import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase";
-import bcrypt from "bcrypt";
 import { signJWT } from "@/lib/signJWT";
-import { redirect } from "next/navigation";
+import { supabase } from "@/lib/supabase";
+import { NextResponse } from "next/server";
+const bcrypt = require("bcrypt");
 
 export async function POST(req) {
   try {
-    const { username, password } = await req.json();
+    const { username, password, confirm_password } = await req.json();
 
-    if (!username || !password) {
+    if (!username || !password || !confirm_password) {
       return NextResponse.json(
         { error: "Missing credentials" },
         { status: 400 },
@@ -18,6 +17,13 @@ export async function POST(req) {
     if (password.length < 8) {
       return NextResponse.json(
         { error: "Password too short" },
+        { status: 400 },
+      );
+    }
+
+    if (password !== confirm_password) {
+      return NextResponse.json(
+        { error: "Passwords doesn't match" },
         { status: 400 },
       );
     }
@@ -43,11 +49,10 @@ export async function POST(req) {
 
     const token = signJWT({
       id: data.id,
-      role: "user",
+      owner: sha256(username),
     });
 
     const res = NextResponse.json({ success: true });
-
     res.cookies.set("auth", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
@@ -55,8 +60,7 @@ export async function POST(req) {
       maxAge: 60 * 60 * 24 * 30,
       path: "/",
     });
-
-    redirect("/home");
+    return res;
   } catch (err) {
     console.error("SIGNUP ERROR:", err);
     return NextResponse.json(
