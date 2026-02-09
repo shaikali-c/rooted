@@ -12,7 +12,7 @@ const diary_font = Source_Serif_4({
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 
 export const metadata = {
-  title: "Meow notes",
+  title: "Rooted",
   description: "Encrypted by default",
 };
 

@@ -41,13 +41,18 @@ export default function SecretSidebar({ secrets }) {
             />
           );
         })}
+        {filtered.length === 0 && (
+          <div className="flex flex-col gap-2">
+            <p>Nothing yet, create something.</p>
+            <Link
+              href={"/new"}
+              className="w-full bg-neutral-200 py-2 text-center border-neutral-300 rounded-md border"
+            >
+              Create
+            </Link>
+          </div>
+        )}
         {filtered.length > 0 && <Divider />}
-        <Link
-          href={"/new"}
-          className="w-full bg-neutral-200 py-2 text-center border-neutral-300 rounded-md border"
-        >
-          Create new
-        </Link>
       </section>
     </div>
   );
