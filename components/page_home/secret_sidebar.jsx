@@ -5,6 +5,8 @@ import SecretCard from "@/components/_base_entry";
 import MainLogo from "@/components/main_logo";
 import { usePathname } from "next/navigation";
 import Divider from "../divider";
+import PrimaryButton from "../primary_btn";
+import Link from "next/link";
 
 export default function SecretSidebar({ secrets }) {
   const pathname = usePathname();
@@ -39,7 +41,13 @@ export default function SecretSidebar({ secrets }) {
             />
           );
         })}
-        <Divider />
+        {filtered.length > 0 && <Divider />}
+        <Link
+          href={"/new"}
+          className="w-full bg-neutral-200 py-2 text-center border-neutral-300 rounded-md border"
+        >
+          Create new
+        </Link>
       </section>
     </div>
   );

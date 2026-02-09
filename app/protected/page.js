@@ -27,16 +27,20 @@ export default function PageEnter() {
           >
             <MainLogo />
             <Heading className={"text-gray-900"}>
-              Enter your password to continue
+              Enter your protected password to continue
             </Heading>
             <Field>
               <Label>Password</Label>
               <InputGroup>
                 <KeyIcon />
-                <Input name="protected" aria-label="Search" />
+                <Input
+                  name="protected"
+                  type="password"
+                  aria-label="Protected password"
+                />
               </InputGroup>
               <Description className={"text-neutral-500"}>
-                This password unlocks your encrypted entries.
+                This password will be used to unlock your encrypted entries.
               </Description>
             </Field>
             <button

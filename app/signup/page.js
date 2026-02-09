@@ -69,7 +69,12 @@ export default function PageSignup() {
               <Label>New password</Label>
               <InputGroup>
                 <KeyIcon />
-                <Input name="password" aria-label="Password" ref={password} />
+                <Input
+                  name="password"
+                  type="password"
+                  aria-label="Password"
+                  ref={password}
+                />
               </InputGroup>
             </Field>
             <Field>
@@ -78,6 +83,7 @@ export default function PageSignup() {
                 <KeyIcon />
                 <Input
                   name="c_password"
+                  type="password"
                   aria-label="Confirm password"
                   ref={confirm_password}
                 />

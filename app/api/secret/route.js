@@ -27,7 +27,7 @@ export async function POST(req) {
 
   const body = await req.json();
   const body_s = JSON.stringify(body);
-  const _encrypt = await encryptData(body_s, "123");
+  const _encrypt = await encryptData(body_s, protected_key);
 
   result = await supabase
     .from("secrets")

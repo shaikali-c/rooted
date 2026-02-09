@@ -34,7 +34,6 @@ export default function LoginForm({}) {
     });
     setLoading(false);
     const response = await res.json();
-    console.log(response);
     if (!response.success) {
       setError(response.error);
     } else {
@@ -53,14 +52,14 @@ export default function LoginForm({}) {
         <Label>Username</Label>
         <InputGroup>
           <EnvelopeIcon />
-          <Input name="username" aria-label="Search" />
+          <Input name="username" type="text" aria-label="Username" />
         </InputGroup>
       </Field>
       <Field>
         <Label>Password</Label>
         <InputGroup>
           <KeyIcon />
-          <Input name="password" aria-label="Search" />
+          <Input name="password" type="password" aria-label="Password" />
         </InputGroup>
       </Field>
       {error && <FormError>Failed to authenticate</FormError>}

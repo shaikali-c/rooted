@@ -6,7 +6,7 @@ export async function proxy(req) {
   const protected_key_check = req.cookies.get("protected")?.value;
 
   if (!token) {
-    return NextResponse.redirect(new URL("/login", req.url));
+    return NextResponse.redirect(new URL("/signup", req.url));
   }
   if (!protected_key_check)
     return NextResponse.redirect(new URL("/protected", req.url));
@@ -18,8 +18,9 @@ export async function proxy(req) {
     response.cookies.set("owner", payload.owner);
     return response;
   } catch (err) {
-    const res = NextResponse.redirect(new URL("/login", req.url));
+    const res = NextResponse.redirect(new URL("/signup", req.url));
     res.cookies.delete("auth");
+    res.cookies.delete("protected");
     return res;
   }
 }

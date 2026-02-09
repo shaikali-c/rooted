@@ -1,3 +1,4 @@
+import { sha256 } from "@/helpers/sha256";
 import { signJWT } from "@/lib/signJWT";
 import { supabase } from "@/lib/supabase";
 import { NextResponse } from "next/server";
