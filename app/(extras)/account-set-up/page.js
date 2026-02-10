@@ -27,7 +27,7 @@ export default function AccountPage() {
               Everything you write is encrypted and stays private, so your
               thoughts remain yours.
             </p>
-            <PrimaryButton href="/new">Create my diary</PrimaryButton>
+            <PrimaryButton href="/new">Create my note</PrimaryButton>
           </main>
         </div>
       </section>
