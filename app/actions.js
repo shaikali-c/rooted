@@ -9,3 +9,7 @@ export async function getCookie(key) {
   const cookieStore = await cookies();
   return cookieStore.get(key);
 }
+export async function deleteCookie(key) {
+  const cookieStore = await cookies();
+  cookieStore.delete(key);
+}

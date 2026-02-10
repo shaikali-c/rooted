@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import Divider from "../divider";
 import PrimaryButton from "../primary_btn";
 import Link from "next/link";
+import { Plus } from "lucide-react";
 
 export default function SecretSidebar({ secrets }) {
   const pathname = usePathname();
@@ -18,7 +19,7 @@ export default function SecretSidebar({ secrets }) {
 
   return (
     <div
-      className={`h-full max-h-dvh mask-[linear-gradient(to_bottom,#f8f8f8_70%,transparent_100%)] ${isDetail ? "md:grid hidden" : "grid"} grid-rows-[135px_1fr]`}
+      className={`h-full max-h-dvh mask-[linear-gradient(to_bottom,#f8f8f8_70%,transparent_100%)] ${isDetail ? "md:grid hidden" : "grid"} grid-rows-[135px_1fr] ${!filtered.length ? "border-r border-neutral-200" : ""} pr-5`}
     >
       <div className="flex flex-col gap-5">
         <header className="flex items-center justify-between pt-7">
@@ -42,13 +43,13 @@ export default function SecretSidebar({ secrets }) {
           );
         })}
         {filtered.length === 0 && (
-          <div className="flex flex-col gap-2">
-            <p>Nothing yet, create something.</p>
+          <div className="flex flex-col gap-3 my-auto mx-auto justify-center items-center">
+            <p className="text-neutral-600">Nothing to see</p>
             <Link
               href={"/new"}
-              className="w-full bg-neutral-200 py-2 text-center border-neutral-300 rounded-md border"
+              className="w-fit p-4 bg-accent text-center border-neutral-300 rounded-full border text-white"
             >
-              Create
+              <Plus />
             </Link>
           </div>
         )}

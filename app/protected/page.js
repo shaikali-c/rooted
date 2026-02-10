@@ -7,7 +7,8 @@ import { KeyIcon } from "@heroicons/react/20/solid";
 import { createCookie } from "../actions";
 import { redirect } from "next/navigation";
 
-export default function PageEnter() {
+export default async function PageEnter({ searchParams }) {
+  const { invalid } = await searchParams;
   async function storeProtected(formData) {
     "use server";
 
@@ -27,7 +28,9 @@ export default function PageEnter() {
           >
             <MainLogo />
             <Heading className={"text-gray-900"}>
-              Enter your protected password to continue
+              {!invalid
+                ? "Enter your protected password to continue"
+                : "Incorrect password"}
             </Heading>
             <Field>
               <Label>Password</Label>

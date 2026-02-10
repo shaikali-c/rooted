@@ -4,7 +4,12 @@ import { Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
 import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
-import { EnvelopeIcon, KeyIcon } from "@heroicons/react/24/outline";
+import {
+  EnvelopeIcon,
+  KeyIcon,
+  StarIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
 import { Loader } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -51,7 +56,7 @@ export default function LoginForm({}) {
       <Field>
         <Label>Username</Label>
         <InputGroup>
-          <EnvelopeIcon />
+          <UserCircleIcon />
           <Input name="username" type="text" aria-label="Username" />
         </InputGroup>
       </Field>
@@ -64,7 +69,7 @@ export default function LoginForm({}) {
       </Field>
       {error && <FormError>Failed to authenticate</FormError>}
       <button
-        className={`py-1.5 w-full ${loading ? "bg-accent/70" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
+        className={`py-1.5 w-full ${loading ? "bg-accent/75" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
         type="submit"
       >
         {loading && <Loader size={18} className={"animate-spin"} />}

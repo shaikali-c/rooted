@@ -30,6 +30,7 @@ export default function Editor({ id }) {
       if (version === saveVersion.current) {
         lastSave.current = Date.now();
         setSaving(false);
+        setSavedMins("just now");
       }
     } catch {
       if (version === saveVersion.current) {

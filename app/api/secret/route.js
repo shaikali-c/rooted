@@ -22,7 +22,7 @@ export async function POST(req) {
   if (error || !data) {
     return NextResponse.json({ error: "Owner not found" }, { status: 404 });
   }
-  const { password, username } = data;
+  const { username } = data;
   const unique_uname_hash = sha256(username);
 
   const body = await req.json();

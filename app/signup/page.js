@@ -7,7 +7,11 @@ import { Heading } from "@/components/_ext/catalyst/heading";
 import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
 
-import { EnvelopeIcon, KeyIcon } from "@heroicons/react/24/outline";
+import {
+  EnvelopeIcon,
+  KeyIcon,
+  UserCircleIcon,
+} from "@heroicons/react/24/outline";
 
 import { useRef, useState } from "react";
 import FormError from "@/components/form_err";
@@ -57,7 +61,7 @@ export default function PageSignup() {
             <Field>
               <Label>Unique username</Label>
               <InputGroup>
-                <EnvelopeIcon />
+                <UserCircleIcon />
                 <Input
                   name="username"
                   ref={username}
@@ -95,7 +99,7 @@ export default function PageSignup() {
             </Field>
             {error && <FormError>{error}</FormError>}
             <button
-              className={`py-1.5 w-full ${loading ? "bg-accent/70" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
+              className={`py-1.5 w-full ${loading ? "bg-accent/75" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
               type="submit"
             >
               {loading && <Loader size={18} className={"animate-spin"} />}

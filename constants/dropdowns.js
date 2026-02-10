@@ -99,7 +99,7 @@ export const home_dd = [
     items: [
       {
         label: "Logout",
-        href: "#",
+        href: "/logout",
         icon: "arrowleft",
         danger: true, // optional future use
       },
