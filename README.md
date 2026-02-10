@@ -1,3 +1,6 @@
+<img width="1920" height="967" alt="first" src="https://github.com/user-attachments/assets/50dd90df-964b-4fd6-9ebf-acd78dda9662" />
+
+
 # Rooted
 
 A privacy-first, end-to-end encrypted notes app where your notes are encrypted before they leave your device.
