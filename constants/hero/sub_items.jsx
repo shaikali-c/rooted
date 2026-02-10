@@ -5,6 +5,6 @@ export const sub_items = [
   },
   {
     item_name: "GitHub",
-    path: "/",
+    path: "https://github.com/shaikali-c/rooted",
   },
 ];
