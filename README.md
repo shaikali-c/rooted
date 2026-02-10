@@ -1,3 +1,5 @@
+![image]("https://raw.githubusercontent.com/shaikali-c/rooted/refs/heads/main/screenshots/first.png")
+
 # Rooted
 
 A privacy-first, end-to-end encrypted notes app where your notes are encrypted before they leave your device.
