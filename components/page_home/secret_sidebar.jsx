@@ -19,7 +19,7 @@ export default function SecretSidebar({ secrets }) {
 
   return (
     <div
-      className={`h-full max-h-dvh mask-[linear-gradient(to_bottom,#f8f8f8_70%,transparent_100%)] ${isDetail ? "md:grid hidden" : "grid"} grid-rows-[135px_1fr] ${!filtered.length ? "border-r border-neutral-200" : ""} pr-5`}
+      className={`h-full max-h-dvh mask-[linear-gradient(to_bottom,#f8f8f8_70%,transparent_100%)] ${isDetail ? "md:grid hidden" : "grid"} grid-rows-[135px_1fr] ${!filtered.length ? "md:border-r border-neutral-200" : ""} pr-5`}
     >
       <div className="flex flex-col gap-5">
         <header className="flex items-center justify-between pt-7">
