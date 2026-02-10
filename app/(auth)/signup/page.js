@@ -30,23 +30,31 @@ export default function PageSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const res = await fetch("/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: username.current.value,
-        password: password.current.value,
-        confirm_password: confirm_password.current.value,
-      }),
-    });
-    setLoading(false);
+    setError("");
 
-    const response = await res.json();
-    if (response.error) return setError(response.error);
-    else setError(false);
-    router.replace("/home");
+    try {
+      const res = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: username.current?.value ?? "",
+          password: password.current?.value ?? "",
+          confirm_password: confirm_password.current?.value,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || data?.error) {
+        throw new Error(data?.error || "Signup failed");
+      }
+
+      router.replace("/home");
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <main className="h-dvh w-screen flex justify-center relative items-center font-main bg-neutral-100 text-gray-900">
@@ -99,6 +107,7 @@ export default function PageSignup() {
             </Field>
             {error && <FormError>{error}</FormError>}
             <button
+              disabled={loading}
               className={`py-1.5 w-full ${loading ? "bg-accent/75" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
               type="submit"
             >

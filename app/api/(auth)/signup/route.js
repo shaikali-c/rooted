@@ -54,6 +54,7 @@ export async function POST(req) {
     });
 
     const res = NextResponse.json({ success: true });
+
     res.cookies.set("auth", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

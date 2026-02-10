@@ -15,11 +15,16 @@ export async function proxy(req) {
     const payload = await verifyJWT(token);
 
     let response = NextResponse.next();
-    response.cookies.set("owner", payload.owner);
+    if (!req.cookies.get("owner")) {
+      response.cookies.set("owner", payload.owner, {
+        maxAge: 60 * 60 * 24 * 30,
+      });
+    }
     return response;
   } catch (err) {
     const res = NextResponse.redirect(new URL("/signup", req.url));
     res.cookies.delete("auth");
+    res.cookies.delete("owner");
     res.cookies.delete("protected");
     return res;
   }
