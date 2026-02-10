@@ -1,10 +1,10 @@
+import { createCookie } from "@/app/actions";
 import { AuthLayout } from "@/components/_ext/catalyst/auth-layout";
 import { Description, Field, Label } from "@/components/_ext/catalyst/fieldset";
 import { Heading } from "@/components/_ext/catalyst/heading";
 import { Input, InputGroup } from "@/components/_ext/catalyst/input";
 import MainLogo from "@/components/main_logo";
 import { KeyIcon } from "@heroicons/react/20/solid";
-import { createCookie } from "../actions";
 import { redirect } from "next/navigation";
 
 export default async function PageEnter({ searchParams }) {

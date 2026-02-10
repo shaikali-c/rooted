@@ -26,7 +26,18 @@ const ICONS = {
   arrowleft: ArrowLeftStartOnRectangleIcon,
 };
 
+import { useRouter } from "next/navigation";
+
 export default function DropDown({ list }) {
+  const router = useRouter();
+  const logout = async () => {
+    try {
+      await fetch("/api/logout");
+      router.replace("/signup");
+    } catch (err) {
+      router.replace("/signup");
+    }
+  };
   return (
     <Menu as="div" className="relative inline-block text-left out outline-0">
       <div className="flex items-center">
@@ -46,17 +57,25 @@ export default function DropDown({ list }) {
 
               return (
                 <MenuItem key={itemIdx} className="group">
-                  <Link
-                    href={item.href}
-                    className={`flex items-center px-4 py-2 text-sm ${
-                      item.danger
-                        ? "text-red-400 data-focus:bg-red-100"
-                        : "text-gray-700 data-focus:bg-gray-100"
-                    }`}
-                  >
-                    {Icon && <Icon className="mr-3 size-5" />}
-                    {item.label}
-                  </Link>
+                  {!item.action ? (
+                    <Link
+                      href={item.href}
+                      className={`flex items-center px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-300"
+                      }`}
+                    >
+                      {Icon && <Icon className="mr-3 size-5" />}
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={logout}
+                      className="flex items-center px-4 w-full transition-colors py-2 text-sm
+                        text-red-400 data-focus:bg-red-100"
+                    >
+                      {Icon && <Icon className="mr-3 size-5" />}
+                      Logout
+                    </button>
+                  )}
                 </MenuItem>
               );
             })}

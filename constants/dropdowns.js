@@ -100,6 +100,7 @@ export const home_dd = [
       {
         label: "Logout",
         href: "/logout",
+        action: "logout",
         icon: "arrowleft",
         danger: true, // optional future use
       },

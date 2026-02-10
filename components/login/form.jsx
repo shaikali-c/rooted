@@ -7,18 +7,21 @@ import { Strong, Text, TextLink } from "@/components/_ext/catalyst/text";
 import {
   EnvelopeIcon,
   KeyIcon,
+  SparklesIcon,
   StarIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
-import { Loader } from "lucide-react";
+import { Loader, Sparkle, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import MainLogo from "@/components/main_logo";
 import FormError from "../form_err";
+import FormSuccess from "../form_success";
 
 export default function LoginForm({}) {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -43,6 +46,7 @@ export default function LoginForm({}) {
       setError(response.error);
     } else {
       setError(false);
+      setSuccess(true);
       router.replace("/home");
     }
   };
@@ -68,6 +72,11 @@ export default function LoginForm({}) {
         </InputGroup>
       </Field>
       {error && <FormError>Failed to authenticate</FormError>}
+      {success && (
+        <FormSuccess>
+          <Sparkles size={18} /> Login successful
+        </FormSuccess>
+      )}
       <button
         className={`py-1.5 w-full ${loading ? "bg-accent/75" : "bg-accent"} text-white font-semibold rounded-md flex justify-center gap-2 items-center`}
         type="submit"
