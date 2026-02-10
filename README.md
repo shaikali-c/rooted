@@ -34,5 +34,3 @@ This project exists to demonstrate real-world cryptography, secure auth, and cle
 - Key rotation
 - Secure sharing between users
 - Native client using the same crypto model
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
